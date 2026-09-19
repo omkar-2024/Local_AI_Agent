@@ -1,0 +1,25 @@
+# Local Ollama model registry for the SIH Air-Gapped AI Workbench.
+# The 0.5B model is the task router. The larger models are task workers.
+
+default_router:
+  model_name: "qwen2.5:0.5b"
+  api_base: "http://localhost:11434/v1"
+
+task_routes:
+  TASK_CODING:
+    primary_model: "qwen2.5-coder:7b"
+    api_base: "http://localhost:11434/v1"
+    vram_required_gb: 8.5
+    context_length: 16384
+
+  TASK_DOCUMENT_SUMMARY:
+    primary_model: "qwen2.5:7b"
+    api_base: "http://localhost:11434/v1"
+    vram_required_gb: 9.0
+    context_length: 8192
+
+  TASK_MULTIMODAL_VISION:
+    primary_model: "qwen2.5vl:7b"
+    api_base: "http://localhost:11434/v1"
+    vram_required_gb: 5.0
+    context_length: 4096
