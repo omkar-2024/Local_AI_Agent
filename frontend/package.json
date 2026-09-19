@@ -1,0 +1,14 @@
+{
+  "name": "sih-air-gapped-workbench",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+  "dev": "vite --host",
+  "build": "vite build",
+  "preview": "vite preview"
+}
+,
+  "dependencies": { "@vitejs/plugin-react": "latest", "lucide-react": "latest", "react": "latest", "react-dom": "latest", "vite": "latest" },
+  "devDependencies": {}
+}

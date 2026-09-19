@@ -1,0 +1,308 @@
+/* ============================================================
+   PROCESSING STATUS
+   ============================================================ */
+
+.processing-status {
+  width: fit-content;
+  min-width: 280px;
+  max-width: 520px;
+
+  margin: 12px 0;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: var(--surface);
+
+  overflow: hidden;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.processing-status__header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 12px 15px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.processing-status__status-dot {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  animation:
+    processing-status-pulse
+    1.4s
+    ease-in-out
+    infinite;
+}
+
+
+.processing-status__title {
+  color: var(--text);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+
+/* ============================================================
+   STEPS
+   ============================================================ */
+
+.processing-status__steps {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 6px 0;
+}
+
+
+/* ============================================================
+   INDIVIDUAL STEP
+   ============================================================ */
+
+.processing-step {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 8px 15px;
+
+  font-size: 13px;
+
+  line-height: 1.35;
+
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.processing-step__indicator {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.processing-step__label {
+  flex: 1;
+
+  color: var(--text);
+}
+
+
+/* ============================================================
+   COMPLETED
+   ============================================================ */
+
+.processing-step--completed
+  .processing-step__indicator {
+
+  color: #7fbf8f;
+}
+
+
+.processing-step--completed
+  .processing-step__label {
+
+  color: var(--text);
+
+  opacity: 0.65;
+}
+
+
+/* ============================================================
+   ACTIVE
+   ============================================================ */
+
+.processing-step--active {
+
+  background:
+    rgba(201, 154, 91, 0.08);
+}
+
+
+.processing-step--active
+  .processing-step__indicator {
+
+  color: var(--accent);
+}
+
+
+.processing-step--active
+  .processing-step__label {
+
+  color: var(--accent);
+
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   ACTIVE SPINNER
+   ============================================================ */
+
+.processing-spin {
+
+  animation:
+    processing-spin
+    1s
+    linear
+    infinite;
+}
+
+
+@keyframes processing-spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* ============================================================
+   ACTIVE DOTS
+   ============================================================ */
+
+.processing-step__dots {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  margin-left: 5px;
+}
+
+
+.processing-step__dots span {
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  animation:
+    processing-dot
+    1.2s
+    infinite ease-in-out;
+}
+
+
+.processing-step__dots span:nth-child(2) {
+
+  animation-delay: 0.15s;
+}
+
+
+.processing-step__dots span:nth-child(3) {
+
+  animation-delay: 0.3s;
+}
+
+
+@keyframes processing-dot {
+
+  0%,
+  60%,
+  100% {
+
+    opacity: 0.25;
+
+    transform: translateY(0);
+  }
+
+  30% {
+
+    opacity: 1;
+
+    transform: translateY(-2px);
+  }
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.processing-step--error {
+
+  background:
+    rgba(217, 123, 108, 0.08);
+}
+
+
+.processing-step--error
+  .processing-step__indicator {
+
+  color: var(--danger);
+}
+
+
+.processing-step--error
+  .processing-step__label {
+
+  color: var(--danger);
+
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   HEADER ANIMATION
+   ============================================================ */
+
+@keyframes processing-status-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+
+}
